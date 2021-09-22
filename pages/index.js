@@ -48,7 +48,14 @@ export default class Home extends React.Component {
     this.setState({urls: stateUrls});
   }
   fetchImageURLs = () => {
-    fetch(url + "/api/images")
+    fetch(url + "/api/images", {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({query: {}})
+    })
     .then((res) => {return res.json()})
     .then(data => {
       this.setState({imageURLs: data.images});
@@ -101,8 +108,6 @@ export default class Home extends React.Component {
           </div>
         </main>
 
-        <footer className={styles.footer}>
-        </footer>
       </div>
     )
   }

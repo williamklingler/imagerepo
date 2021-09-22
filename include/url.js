@@ -1,2 +1,2 @@
-var url = "http://redditbets.zapto.org:3000";
+var url = "http://spaceballcookie.hopto.org:3002";
 export default url;
