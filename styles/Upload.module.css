@@ -1,0 +1,245 @@
+.container {
+  min-height: 100vh;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(1, 32, 39, 0.5);
+  color: #fff;
+}
+
+.subcontainer {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.dragndrop {
+  display: flex;
+  border: 1px dashed #fff;
+  border-radius: 100px;
+  padding: 0.5em 0.6em;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  cursor: pointer;
+  margin-bottom: 4em;
+  background-color:rgba(255, 255, 255, 0.2);
+  transition-duration: 0.3s;
+}
+
+.dragndrop:hover{
+  transform: translateY(-0.3em);
+  background-color:rgba(255, 255, 255, 0);
+}
+
+
+.main {
+  padding: 5rem 0;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* .main::after {
+  content: "";
+  background: url('../public/stockstudents.jpg');
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  position: absolute;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+
+.input {
+  background-color:rgba(255, 255, 255, 0.2);
+  border: 1px solid #fff;
+  border-radius: 4px;
+  font-size: 17px;
+  padding: 7px 12px;
+  font-weight: 400;
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  background: transparent;
+  color: #fff;
+}
+
+.input:focus {
+  outline: none !important;
+}
+
+.input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #fff;
+}
+
+.ghostbutton {
+  border: 2px solid #fff;
+  border-radius: 100px;
+  font-size: 17px;
+  padding: 7px 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-decoration: none;
+  font-family: 'Open Sans', sans-serif;
+  transition-duration: 0.3s;
+}
+
+.ghostbutton:hover{
+  color: #576668;
+  background-color: #FFF;
+  transform: translateY(-0.3em);
+}
+
+.btndiv{
+  align-self: 'baseline';
+}
+.header {
+  width: 100%;
+  height: 3em;
+  padding: 2.4em;
+  background-color: #011f27;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #d8dbe2;
+
+}
+
+.logo {
+  height: 3em;
+  padding-right: 1em;
+}
+
+.upload {
+  height: 1.8em;
+  padding-right: 0.6em;
+}
+
+.footer {
+  width: 100%;
+  height: 3em;
+  background-color: #fff;
+  color: #011f27;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer img {
+  margin-left: 0.5rem;
+}
+
+.footer a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.title a:hover,
+.title a:focus,
+.title a:active {
+  text-decoration: underline;
+}
+
+.button {
+  padding: 0.4em;
+}
+
+.title {
+  margin: 0;
+  line-height: 1.15;
+  font-size: 4rem;
+}
+
+.subtitle {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.subtitle2 {
+  padding-top: 2em;
+  margin-bottom: 0;
+}
+
+.text {
+  padding-bottom: 1em;
+  font-weight: 200;
+}
+
+.description {
+  line-height: 1.5;
+  font-size: 1.5rem;
+}
+
+.code {
+  background: #fafafa;
+  border-radius: 5px;
+  padding: 0.75rem;
+  font-size: 1.1rem;
+  font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
+    Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin-top: 3rem;
+}
+
+.card {
+  margin: 1rem;
+  flex-basis: 45%;
+  padding: 1.5rem;
+  text-align: left;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover,
+.card:focus,
+.card:active {
+  color: #0070f3;
+  border-color: #0070f3;
+}
+
+.card h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .grid {
+    width: 100%;
+    flex-direction: column;
+  }
+}
