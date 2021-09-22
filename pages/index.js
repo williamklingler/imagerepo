@@ -22,21 +22,30 @@ export default class Home extends React.Component {
       return;
     }
     else this.setState({message: ''});
-    console.log(files);
-    this.setState({fileSelected: true})
-    let file = files[0];
-    this.setState({fileName: file.name})
-    // if(file.name.split('.')[1] != "pdf"){
-    //   alert("only accepts PDFs");
-    //   return;
-    // }
     const req = request.post(url + '/api/fileUpload');
-    files.forEach(file => {
-      req.attach("userfile", file);
-      // req.field('email', this.state.email);   maybe replace this with userID in future
-    });
-    console.log(req);
+    console.log(files);
+    for (const file of files) {
+      req.attach(file.name, file);
+    }
     req.end();
+    this.fetchImageURLs();
+  }
+  deleteImages = (e, urls) =>{
+    e.preventDefault();
+    if(!Array.isArray(urls)){
+      urls = [urls];
+    }
+    request
+    .post(url + "/api/delete")
+    .send({urls: urls})
+    .end();
+    let stateUrls = this.state.imageURLs;
+    console.log(urls);
+    console.log(stateUrls)
+    urls.forEach((imageUrl, i) => {
+      stateUrls.splice(imageUrl.indexOf(url),1);
+    });
+    this.setState({urls: stateUrls});
   }
   fetchImageURLs = () => {
     fetch(url + "/api/images")
@@ -60,11 +69,14 @@ export default class Home extends React.Component {
           <h1 className={styles.title}>
             Welcome to <a>ImageRepo!</a>
           </h1>
-          <p> remove extras from upload.module.css </p>
+          <div className={styles.description}>
+            <p> Click on an image to delete it </p>
+          </div>
+        <div className={uploadStyles.subcontainer}>
           <Dropzone accept="image/*" onDrop={this.handleUpload}>
               {({getRootProps, getInputProps}) => (
                 <section>
-                  <div {...getRootProps()} className={styles.dragndrop}>
+                  <div {...getRootProps()} className={uploadStyles.dragndrop}>
                     <input {...getInputProps()} />
                     <img className={uploadStyles.upload}
                       src="/upload.png"
@@ -76,51 +88,20 @@ export default class Home extends React.Component {
                 </section>
               )}
             </Dropzone>
-            <button onClick={this.fetchImageURLs()}> Reload Images </button>
+          </div>
+            <button onClick={this.fetchImageURLs}> Reload Images </button>
           <div className={styles.grid}>
           <>{ this.state.imageURLs.map((url, i) => (
-            <img src={url} className={styles.card}/>
+            <a className={styles.card} onClick={e => this.deleteImages(e, url)}>
+              <img src={url}/>
+            </a>
           )
         )
         }</>
-            <a href="https://nextjs.org/docs" className={styles.card}>
-              <h3>Documentation &rarr;</h3>
-              <p>Find in-depth information about Next.js features and API.</p>
-            </a>
-
-            <a href="https://nextjs.org/learn" className={styles.card}>
-              <h3>Learn &rarr;</h3>
-              <p>Learn about Next.js in an interactive course with quizzes!</p>
-            </a>
-
-            <a
-              href="https://github.com/vercel/next.js/tree/master/examples"
-              className={styles.card}
-            >
-              <h3>Examples &rarr;</h3>
-              <p>Discover and deploy boilerplate example Next.js projects.</p>
-            </a>
-
-            <a
-              href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              className={styles.card}
-            >
-              <h3>Deploy &rarr;</h3>
-              <p>
-                Instantly deploy your Next.js site to a public URL with Vercel.
-              </p>
-            </a>
           </div>
         </main>
 
         <footer className={styles.footer}>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-
-          </a>
         </footer>
       </div>
     )

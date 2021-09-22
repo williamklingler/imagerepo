@@ -35,18 +35,22 @@ export default (req, res) => {
   form.uploadDir = "./";
   form.keepExtensions = true;
   form.parse(req, (err, fields, files) => {
-    var extension = files.userfile.path.split('.').pop();
-    console.log(extension);
-    var oldpath = files.userfile.path;
-    var unique_id = uuidv4();
-    var newpath = '/imagerepoFS/' + unique_id ;
-    console.log(newpath)
-    fs.rename(oldpath, newpath, function (err) {
-      if (err) throw err;
-      let dataBuffer = fs.readFileSync(newpath);
-      dbmanager.addImage(unique_id, newpath, extension);
-      res.write('File uploaded and moved!');
-      res.end();
-    });
+    console.log(files);
+    for(var key in files) {
+      console.log(key)
+      var extension = files[key].path.split('.').pop();
+      console.log(extension);
+      var oldpath = files[key].path;
+      var unique_id = uuidv4();
+      var newpath = '/imagerepoFS/' + unique_id ;
+      console.log(newpath)
+      fs.rename(oldpath, newpath, function (err) {
+        if (err) throw err;
+        let dataBuffer = fs.readFileSync(newpath);
+        dbmanager.addImage(unique_id, newpath, extension);
+        res.write('File uploaded and moved!');
+        res.end();
+      });
+    }
   });
 }

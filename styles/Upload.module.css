@@ -19,6 +19,7 @@
 }
 
 .dragndrop {
+  margin-top: 20px;
   display: flex;
   border: 1px dashed #fff;
   border-radius: 100px;
@@ -28,13 +29,12 @@
   align-content: center;
   cursor: pointer;
   margin-bottom: 4em;
-  background-color:rgba(255, 255, 255, 0.2);
   transition-duration: 0.3s;
+  background-color:rgba(0, 112, 243, 0.75);
 }
 
 .dragndrop:hover{
   transform: translateY(-0.3em);
-  background-color:rgba(255, 255, 255, 0);
 }
 
 
@@ -124,8 +124,7 @@
 }
 
 .upload {
-  height: 1.8em;
-  padding-right: 0.6em;
+  height: 5.8em;
 }
 
 .footer {

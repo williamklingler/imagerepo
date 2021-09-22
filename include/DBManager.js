@@ -18,6 +18,11 @@ class DBManager{
     })
   }
 
+  deleteImage(name){
+    Image.remove({name:name})
+    .exec();
+  }
+
   queryImages(queryParameters, fn){
     Image.find(queryParameters)
     .exec((err, foundItems) => {
