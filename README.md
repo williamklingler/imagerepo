@@ -1,5 +1,5 @@
 # imagrepo 📷
-### * react, mongoDB, next.js*
+### *react, mongoDB, next.js*
 Little web app that allows anyone to upload and delete images.
 
 Link: [imagerepo](http://spaceballcookie.hopto.org:3002)
